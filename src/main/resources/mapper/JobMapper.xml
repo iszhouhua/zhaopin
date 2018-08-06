@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaopin.dao.JobMapper">
+  <resultMap id="BaseResultMap" type="com.zhaopin.model.Job">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="min_price" jdbcType="DECIMAL" property="minPrice" />
+    <result column="max_price" jdbcType="DECIMAL" property="maxPrice" />
+    <result column="welfare" jdbcType="VARCHAR" property="welfare" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="nature" jdbcType="VARCHAR" property="nature" />
+    <result column="demand" jdbcType="INTEGER" property="demand" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="company_id" jdbcType="CHAR" property="companyId" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <insert id="insertJobList" parameterType="Job" >
+    INSERT INTO job(`id`,`city`,`name`,`url`,`min_price`,`max_price`,`welfare`,`education`,`experience`,`nature`,`demand`,`type`,`address`,`description`,`company_id`,`release_time`,`create_time`)
+    VALUES
+    <foreach collection="list" item="job" separator=",">
+      (#{job.id,jdbcType=CHAR},#{job.city,jdbcType=VARCHAR}, #{job.name,jdbcType=VARCHAR},
+      #{job.url,jdbcType=VARCHAR}, #{job.minPrice,jdbcType=DECIMAL}, #{job.maxPrice,jdbcType=DECIMAL},
+      #{job.welfare,jdbcType=VARCHAR}, #{job.education,jdbcType=VARCHAR}, #{job.experience,jdbcType=VARCHAR},
+      #{job.nature,jdbcType=VARCHAR},#{job.demand,jdbcType=INTEGER}, #{job.type,jdbcType=VARCHAR}, #{job.address,jdbcType=VARCHAR},
+      #{job.description,jdbcType=VARCHAR}, #{job.companyId,jdbcType=CHAR}, #{job.releaseTime,jdbcType=TIMESTAMP},now())
+    </foreach>
+  </insert>
+
+  <select id="countJobForExpAndSalary" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT floor(AVG(min_price)) AS min_price,floor(AVG(max_price)) AS max_price,experience
+    FROM job
+    <where>
+      <if test="city!=null and city!='' and city!='全国'">
+        city=#{city}
+      </if>
+      <if test="name!=null and name!=''">
+        AND name LIKE '%${name}%'
+      </if>
+    </where>
+    GROUP BY experience
+  </select>
+
+  <select id="countJobForExpAndDemand" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT experience,SUM(demand) AS demand FROM job
+    <where>
+      <if test="city!=null and city!='' and city!='全国'">
+        city=#{city}
+      </if>
+      <if test="name!=null and name!=''">
+        AND name LIKE '%${name}%'
+      </if>
+    </where>
+    GROUP BY experience
+  </select>
+
+  <select id="countJobForEducationAndSalary" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT floor(AVG(min_price))AS min_price,floor(AVG(max_price))AS max_price,education
+    FROM job
+    <where>
+      <if test="city!=null and city!='' and city!='全国'">
+        city=#{city}
+      </if>
+      <if test="name!=null and name!=''">
+        AND name LIKE '%${name}%'
+      </if>
+    </where>
+    GROUP BY education
+  </select>
+
+  <select id="countJobForEducationAndDemand" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT education,SUM(demand) AS demand FROM job
+    <where>
+      <if test="city!=null and city!='' and city!='全国'">
+        city=#{city}
+      </if>
+      <if test="name!=null and name!=''">
+        AND name LIKE '%${name}%'
+      </if>
+    </where>
+    GROUP BY education
+  </select>
+</mapper>

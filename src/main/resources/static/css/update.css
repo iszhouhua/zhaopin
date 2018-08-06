@@ -1,0 +1,390 @@
+#search {
+    width: 100%;
+    background: #fff;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.div_border {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+.itemName {
+    float: left;
+    font-weight: 700;
+    width: 42px;
+    line-height: 28px;
+    box-sizing: border-box;
+    font-family: PingFangSC-Medium, Microsoft YaHei;
+    font-size: 14px;
+    color: #333;
+}
+.itemContent {
+    margin-left: 10px;
+    box-sizing: border-box;
+    padding-left: 16px;
+    line-height: 17px;
+    font-family: PingFangSC-Regular, Microsoft YaHei;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 0;
+}
+#queryTitleUls {
+    width: 100%;
+    line-height: 32px;
+}
+.clearfix {
+    zoom: 1;
+    display: block;
+}
+li, ul {
+    list-style: none;
+}
+.currentCity {
+    font-family: PingFangSC-Regular, Microsoft YaHei;
+    font-size: 12px;
+    line-height: 25px;
+    color: #fff;
+    letter-spacing: .61px;
+    background: #1787fb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    padding: 0 26px 0 10px;
+    margin-top: 2px;
+}
+#queryTitleUls li {
+    float: left;
+    margin-right: 10px;
+}
+.span_down, .span_up {
+    display: inline-block;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    width: 4px;
+    height: 4px;
+    -webkit-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    transform: rotate(315deg);
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+.span_up {
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    top: 11px;
+}
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, ol, p, pre, table, td, textarea, th, ul {
+    font-family: PingFang SC, Microsoft YaHei, Lantinghei SC, Helvetica Neue, Helvetica, Arial, \5FAE软雅黑, STHeitiSC-Light, simsun, \5B8B体, WenQuanYi Zen Hei, WenQuanYi Micro Hei, "sans-serif";
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.cityChild {
+    width: 1000px;
+    background: #fff;
+    box-sizing: border-box;
+}
+.choiseCity {
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px 10px;
+    box-sizing: border-box;
+    background: #f7f7f7;
+}
+.clearfix {
+    zoom: 1;
+    display: block;
+}
+.cityItemBox {
+    float: left;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    margin: 5px 10px;
+    margin-left: 10px;
+    margin-left: 0;
+}
+a, a:hover, a:link, a:visited {
+    text-decoration: none;
+}
+a:hover{
+    color: #1787fb;
+}
+
+.other_cityLi {
+    width: 300px;
+    margin-left: 3px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.item_name {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+}
+.other_cityInp{
+    display: inline-block;
+    width: 200px;
+    height: 28px;
+    line-height: 28px;
+    background: #fff;
+    border: 1px solid #e6e8ec;
+    padding-left: 10px;
+    margin-top: -5px;
+    box-sizing: border-box;
+    font-size: 12px;
+    outline: none;
+}
+.search-city:focus{
+    border: 1px solid #1a8afa;
+}
+.other_cityLi i {
+    position: absolute;
+    right: 12px;
+    top: 6px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    background: url("//img03.zhaopin.cn/job-site/img/job-site-sprite.png") -290px -80px;
+}
+em, i {
+    font-style: normal;
+    color: #999;
+}
+.zp-query {
+    display: inline-block;
+    font-family: PingFangSC-Regular, Microsoft YaHei;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 0;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    line-height: 25px;
+}
+
+.zp-queryChecked {
+    display: inline-block;
+    font-family: PingFangSC-Regular, Microsoft YaHei;
+    font-size: 12px;
+    letter-spacing: 0;
+    padding: 0 4px;
+    line-height: 25px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: #1787fb;
+    color: #fff;
+    cursor: pointer;
+}
+.zp-queryChecked:hover,.zp-queryChecked:active,.zp-queryChecked:focus{
+    color: #fff;
+}
+.query_others_box {
+    width: 100%;
+    position: relative;
+}
+.jobTypeContainer {
+    width: 140px;
+    float: left;
+    margin-right: 10px;
+    height: 32px;
+}
+.cascader_container {
+    width: 100%;
+    height: 100%;
+}
+.cascader_input {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    color: #999;
+    line-height: 28px;
+    padding-right: 20px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    background: #f7f7f7;
+    letter-spacing: 0;
+    overflow: hidden;
+    z-index: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #f7f7f7;
+}
+.arrow_down {
+    display: inline-block;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 4px;
+    height: 4px;
+    -webkit-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    transform: rotate(315deg);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.selecter {
+    padding: 10px;
+    width: 502px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #e6e8ec;
+    box-shadow: 0 0 4px 0 rgba(166, 172, 184, .2);
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    z-index: 20;
+    overflow: hidden;
+}
+.selecter ul {
+    float: left;
+    margin-left: 20px;
+    width: 140px;
+}
+.selecter ul li {
+    line-height: 24px;
+    cursor: pointer;
+}
+.jobtype_checked {
+    display: inline-block;
+    font-family: PingFangSC-Regular, Microsoft YaHei;
+    font-size: 12px;
+    letter-spacing: 0;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: #1787fb;
+    color: #fff;
+    cursor: pointer;
+}
+.third_level {
+    max-height: 333px;
+    overflow: auto;
+}
+.title_box {
+    width: 100%;
+}
+.item_title-checked {
+    float: left;
+    width: 140px;
+    height: 32px;
+    margin-right: 10px;
+    font-family: PingFangSC-Regular, Microsoft YaHei;
+    font-size: 12px;
+    color: #999;
+    line-height: 28px;
+    padding-right: 20px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    background: #f7f7f7;
+    letter-spacing: 0;
+    overflow: hidden;
+    z-index: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #f7f7f7;
+}
+.arrow_up {
+    display: inline-block;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 4px;
+    height: 4px;
+    -webkit-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    transform: rotate(315deg);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.zp-search-common {
+    width: auto;
+    position: relative;
+    font-size: 0;
+}
+.zp-search-input {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    height: 34px;
+    border-style: solid;
+    border-color: #7a7a7a;
+    border-width: 1px 0px 1px 0px;
+    text-indent: 20px;
+    font-size: 12px;
+}
+.zp-search-btn {
+    display: inline-block;
+    vertical-align: top;
+    width: 80px;
+    line-height: 34px;
+    height: 34px;
+    text-align: center;
+    background: #1787fb;
+    color: #fff;
+    font-size: 14px;
+}
+.zp-search {
+    color: #fff;
+}
+.zp-i-select-dropdown {
+    text-align: center;
+    min-width: 100%;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    line-height: normal;
+    background-color: #fff;
+    z-index: 99;
+    position: absolute;
+    left: 0;
+    top: 33px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 400px;
+}
+.zp-i-select-dropdown-option {
+    margin-left: 5px;
+    text-align: left;
+    text-indent: 16px;
+    height: 30px;
+    line-height: 30px;
+}
+.select-lable{
+    height: 34px;
+    width: 66px;
+    text-align: center;
+    font-size: 12px;
+}
+.query_box {
+    overflow: hidden;
+}
+.query_box ul {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.query_box ul li {
+    float: left;
+    margin-right: 10px;
+    box-sizing: border-box;
+    line-height: 30px;
+}
+.uploading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -80px;
+    margin-top: 15px;
+    font-size: 30px;
+}

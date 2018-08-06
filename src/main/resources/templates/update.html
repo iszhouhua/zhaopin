@@ -1,0 +1,244 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>数据更新</title>
+    <!-- Select2 -->
+    <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+    <link rel="stylesheet" th:href="@{/css/update.css}">
+</head>
+<body>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            数据更新
+            <small>手动更新招聘信息</small>
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-body">
+                    <div id="search">
+                        <div class="div_border">
+                            <div class="itemName">地点:</div>
+                            <div class="itemContent">
+                                <div id="queryCityBox">
+                                    <ul id="queryTitleUls" class="clearfix">
+                                        <li class="currentCity"><span class="city_name">全国</span>
+                                            <span class="span_down" id="arrows"></span>
+                                        </li>
+                                    </ul>
+                                    <div class="cityChild" style="display:none;">
+                                        <ul class="choiseCity clearfix">
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query zp-queryChecked" id="infiniteCity">全国</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">北京</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">上海</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">深圳</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">广州</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">天津</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">成都</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">杭州</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">武汉</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">大连</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">长春</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">南京</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">济南</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">青岛</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">苏州</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">沈阳</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">西安</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">郑州</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">长沙</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">重庆</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">哈尔滨</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">无锡</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">宁波</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">福州</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">厦门</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">石家庄</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">合肥</a></li>
+                                            <li class="cityItemBox"><a href="javascript:void(0);"
+                                                                       class="zp-query">惠州</a></li>
+                                            <div class="cityItemBox other_cityLi"><span
+                                                    class="item_name">其他国内地区：</span>
+                                                <select class="select2" id="input_city">
+                                                    <option th:each="item:${cityList}" th:value="${item.city}" th:text="${item.city}"></option>
+                                                </select>
+                                            </div>
+                                        </ul>
+                                    </div></div>
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+                        <div class="div_border">
+                            <div class="itemName">行业:</div>
+                            <div class="itemContent">
+                                <div class="query_box">
+                                    <ul>
+                                        <li><a href="javascript:void(0);"
+                                               onclick="chooseIndustry(this)"
+                                               class="zp-query zp-queryChecked" id="infiniteIndustry">不限</a></li>
+                                        </li>
+                                        <li><a href="javascript:void(0);" onclick="chooseIndustry(this,'210500;160400;160000;160500;160200;300100;160100;160600')"
+                                              class="zp-query">互联网/IT</a>
+                                        </li>
+                                        <li >
+                                            <a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'180000;180100;300500;300900')"
+                                                                         class="zp-query">金融</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'140000;140100;140200')"
+                                                                         class="zp-query">房地产/建筑</a>
+
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'200300;200302;201400;201300;300300')"
+                                                                         class="zp-query">商业服务</a>
+                                        </li>
+                                        <li ><a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'120400;120200;170500;170000;300700')"
+                                                                         class="zp-query">贸易/批发/零售</a>
+
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'201100;120800')"
+                                                                         class="zp-query">教育/艺术</a>
+                                        </li>
+                                        <li >
+                                            <a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'121400;200600;200800')"
+                                                                         class="zp-query">服务业</a>
+                                        </li>
+                                        <li >
+                                            <a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'210300;200700')"
+                                                                         class="zp-query">文化/传媒/娱乐</a>
+                                        </li>
+                                        <li >
+                                            <a href="javascript:void(0);"
+                                                                         onclick="chooseIndustry(this,'990000')"
+                                                                         class="zp-query">其他</a>
+                                        </li>
+                                    </ul>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+                        <div class="div_border">
+                            <div class="itemName">月薪:</div>
+                            <div class="itemContent">
+                                <div class="query_box">
+                                    <ul class="uls">
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,-1,-1)"
+                                                                class="zp-query zp-queryChecked" id="infiniteSalary">不限</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,1,1000)" class="zp-query">1K以下</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,1001,2000)" class="zp-query">1K-2K</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,2001,4000)" class="zp-query">2K-4K</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,4001,6000)" class="zp-query">4K-6K</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,6001,8000)" class="zp-query">6K-8K</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,8001,10000)"
+                                                                class="zp-query">8K-10K</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,10001,15000)"
+                                                                class="zp-query">10K-15K</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,15001,25000)"
+                                                                class="zp-query">15K-25K</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,25001,35000)"
+                                                                class="zp-query">25K-35K</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,35001,50000)"
+                                                                class="zp-query">35K-50K</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,50001,70000)"
+                                                                class="zp-query">50K-70K</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,70001,100000)"
+                                                                class="zp-query">70K-100K</a></li>
+                                        <li><a href="javascript:void(0);"
+                                                                onclick="chooseSalary(this,100001,999999)"
+                                                                class="zp-query">100K以上</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+                        <div class="div_border">
+                            <form id="form" action="" method="post">
+                                <input type="hidden" id="city" name="jl" value="全国"/>
+                                <input type="hidden" id="industry" name="in" value=""/>
+                                <input type="hidden" id="minSalary" name="sf" value="-1"/>
+                                <input type="hidden" id="maxSalary" name="st" value="-1"/>
+                                <div class="zp-search-common">
+                                    <select class="select-lable" name="kt" id="keywordType"
+                                            onchange="ktChange()">
+                                        <option value="1" selected="selected">职位</option>
+                                        <option value="2">公司</option>
+                                    </select>
+                                    <input type="text" name="kw" id="keyword"
+                                           placeholder="请输入关键词,例如:JAVA,销售代表,行政助理等" value=""
+                                           class="zp-search-input">
+                                    <a href="javascript:void(0);" class="zp-search-btn zp-blue-button" id="btn_submit">
+                                        <i class="fa fa-search fa-lg zp-search" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div class="overlay" style="display: none;">
+                <i class="fa fa-refresh fa-spin"></i>
+                <div class="uploading">正在更新中...</div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+    <!-- Select2 -->
+    <script th:src="@{/plugins/select2/js/select2.min.js}"></script>
+    <script th:src="@{/plugins/select2/js/i18n/zh-CN.js}"></script>
+    <!-- Page script -->
+    <script th:src="@{/js/update.js}"></script>
+</body>
+</html>

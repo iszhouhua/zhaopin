@@ -1,311 +1,157 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <!--指定了当前的pom版本-->
-  <modelVersion>4.0.0</modelVersion>
-  <!-- 项目坐标信息 -->
-  <!-- 项目主标识，用于定义当前项目属于的实际项目，格式与项目创建的包是一样的，公司域名反写-->
-  <groupId>com.recruitment</groupId>
-  <!-- 项目名或模块名或项目名+模块名组成 -->
-  <artifactId>recruitment</artifactId>
-  <!-- maven打包方式：pom,maven-plugin,war,rar,zip -->
-  <packaging>war</packaging>
-  <!--版本号
-  第一个0表示大版本号
-  第二个0表示分支版本号
-  第三个0表示小版本号
-  SNAPSHOT 快照
-  ALPHA 内部测试
-  BETA 公测
-  RELEASE 稳定
-  GA 正式发布-->
-  <version>1.0-SNAPSHOT</version>
-  <!--项目描述名-->
-  <name>recruitment Maven Webapp</name>
-  <!--项目地址-->
-  <url>http://maven.apache.org</url>
-  <!--项目描述-->
-  <!--<description></description>-->
-  <!-- 开发人员列表，项目发布使用 -->
-  <developers>
-    <!-- 某个项目开发者的信息 -->
-    <developer>
-      <!-- 项目开发者的唯一标识符 -->
-      <id>1</id>
-      <!-- 项目开发者的全名 -->
-      <name>周华</name>
-      <!-- 项目开发者的email -->
-      <email> zh970104@163.com </email>
-      <!-- 项目开发者的主页的URL -->
-      <!--<url />-->
-      <!-- 项目开发者在项目中扮演的角色，角色元素描述了各种角色 -->
-      <roles>
-        <role>developer</role>
-      </roles>
-      <!-- 项目开发者所属组织 -->
-      <!--<organization></organization>-->
-      <!-- 项目开发者所属组织的URL -->
-      <!--<organizationUrl></organizationUrl>-->
-    </developer>
-  </developers>
-  <!-- 许可证信息 -->
-  <!--<licenses>-->
-  <!--<license>-->
-  <!--<name></name>-->
-  <!-- 官方的license正文页面的URL -->
-  <!--<url></url>-->
-  <!-- 项目分发的主要方式：repo，可以从Maven库下载，manual，用户必须手动下载和安装依赖 -->
-  <!--<distribution></distribution>-->
-  <!-- 关于license的补充信息 -->
-  <!--<comments></comments>-->
-  <!--</license>-->
-  <!--</licenses>-->
-  <!-- 项目所属组织信息 -->
-  <!--  <organization>
-      <name></name>
-      <url></url>
-    </organization>-->
-  <!-- 属性列表，相当于定义的公共常量，引用方式比如：${spring.version} -->
-  <properties>
-    <!-- spring版本号 -->
-    <spring.version>4.3.3.RELEASE</spring.version>
-  </properties>
-  <!--依赖列表-->
-  <dependencies>
-    <!-- 具体依赖项，下面主要包含依赖的坐标、类型、范围等信息 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <!-- 依赖的类型 -->
-      <!--<type>jar</type>-->
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.zhaopin</groupId>
+    <artifactId>zhaopin</artifactId>
+    <version>1.0.0</version>
+	<packaging>jar</packaging>
 
-      <!-- 项目如果要使用某个框架或依赖，需要把相关jar包引用到classpath中，maven项目提供了三个classpath：编译、测试、运行 -->
-      <!-- 依赖的范围用于控制依赖于三种classpath关系的，包括：compile、provided、runtime、test、system、import -->
-      <!--
-        compile:默认范围，编译、测试、运行都有效
-        provided:编译和测试有效，最后运行不会被加入
-        runtime:在测试和运行的时候有效，编译不会被加入，比如jdbc驱动jar
-        test:测试阶段有效，比如junit
-        system:与provided一致，编译和测试阶段有效，但与系统关联，可移植性差
-        import:导入的范围，它只是用在dependencyManagement中，表示从其它的pom中导入dependency的配置
-       -->
-      <!-- 表示当前依赖只能在测试代码中引用使用，在主代码中引用使用则报错 -->
-      <scope>test</scope>
-      <!--主动设置禁止自己被传递，只在当前项目中使用，默认false-->
-      <!-- <optional></optional> -->
-      <!--排除依赖传递列表-->
-      <!-- <exclusions></exclusions> -->
-    </dependency>
-    <!--servlet-->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-    </dependency>
-    <!-- spring核心包 -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aop</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jms</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context-support</artifactId>
-      <version>${spring.version}</version>
-      <type>jar</type>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjweaver</artifactId>
-      <version>1.7.4</version>
-    </dependency>
-    <dependency>
-      <groupId>aspectj</groupId>
-      <artifactId>aspectjrt</artifactId>
-      <version>1.5.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>1.9.11</version>
-    </dependency>
-    <!--mybatis核心包-->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.4.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.21</version>
-    </dependency>
-    <dependency>
-      <groupId>c3p0</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>0.9.1.2</version>
-      <type>jar</type>
-    </dependency>
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+    </parent>
 
-    <!--打印日志-->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.5</version>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-    </dependency>
-    <dependency>
-      <groupId>jstl</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <!-- jsoup -->
-    <dependency>
-    <groupId>org.jsoup</groupId>
-    <artifactId>jsoup</artifactId>
-    <version>1.8.3</version>
-  </dependency>
-    <!-- fastjson -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-      <version>1.2.7</version>
-    </dependency>
-  </dependencies>
-  <!-- 构建插件 -->
-  <build>
-    <!--
-        Maven定制化打包后的包名
-        Maven默认的包名为:<finalName>${project.artifactId}-${project.version}</finalName>
-        定制化想要的包名,如加上时间戳:<finalName>${project.artifactId}-${maven.build.timestamp}</finalName>
-    -->
-    <finalName>recruitment</finalName>
-    <!-- 插件列表 -->
-    <plugins>
-      <plugin>
-        <!-- jetty -->
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.2.8.v20150217</version>
-        <configuration>
-          <!--配置端口号-->
-          <httpConnector>
-            <port>8090</port>
-          </httpConnector>
-          <!--如果希望通过命令 mvn jetty:stop 执行关闭 jetty 服务,
-          需要添加一个特殊的端口和控制键-->
-          <stopKey>shutdown</stopKey>
-          <stopPort>9966</stopPort>
-          <!--自动热部署-->
-          <!--默认值是 0。大于 0 的数值表示开启，0 表示关闭，单位为秒。
-          以配置数值为一个周期，自动的扫描文件检查其内容是否有变化，
-          如果发现文件的内容被改变，则自动重新部署运用
-          -->
-          <scanIntervalSeconds>2</scanIntervalSeconds>
-          <!--手动重加载-->
-          <!--reload 的可选值 ：[automatic|manual]-->
-          <!--默认值为 automatic，它与大于 0 的 scanIntervalSeconds 节点一起作用，
-          实现自动热部署的工作。设为 manual 的好处是，当你改变文件内容并保存时，
-          不会马上触发自动扫描和重部署的动作，你还可以继续的修改，直至你在 Console
-          或命令行中敲回车键（Enter）的时候才触发重新加载的动作-->
-          <reload>manual</reload>
-          <!--转储快照-->
-          <!--dumpOnStart 默认值为 false，如果设为 true，jetty 在启动时会
-          把当前服务进程的内存信息输出到控制台中，但这并不会保存到文件中。-->
-          <dumpOnStart>true</dumpOnStart>
-          <!--WEB上下文-->
-          <webApp>
-            <!--contextPath 的默认值的 /，${project.artifactId} 引用了
-            <artifactId> 节点的值，即项目的名称。-->
-            <contextPath>/${project.artifactId}</contextPath>
-            <!--项目的静态资源文件目录默认是 src/main/webapp，
-            如果静态资源目录有多个，或者不在默认的 src/main/webapp 目录下，可做如下配置：
-            <resourceBases>
-              <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
-              <resourceBase>${project.basedir}/commons</resourceBase>
-            </resourceBases>
-            引用静态资源文件时，路径不包含资源目录的名称，如 commons/main.css，
-            引用方式为：<link href="main.css" rel="stylesheet" />
-            -->
-          </webApp>
-          <!--访问日志-->
-          <!--org.eclipse.jetty.server.NCSARequestLog 是 org.eclipse.jetty.server.RequestLog 的一个实现类。
-              org.eclipse.jetty.server.NCSARequestLog 是一种伪标准的 NCSA 日志格式。-->
-          <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
-            <!--日志文件的名称-->
-            <filename>target/access-yyyy_mm_dd.log</filename>
-            <!--日志文件的名称的日期格式，它要求日志文件名必须含有 yyyy_mm_dd 串-->
-            <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
-            <!--日志内容的时间格式-->
-            <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
-            <!--时区-->
-            <logTimeZone>GMT+8:00</logTimeZone>
-            <!--追加到日志-->
-            <append>true</append>
-            <!--记录访问的主机名-->
-            <logServer>true</logServer>
-            <!--日志文件保存的天数, 超过删除-->
-            <retainDays>120</retainDays>
-            <!--记录 cookies-->
-            <logCookies>true</logCookies>
-          </requestLog>
-        </configuration>
-      </plugin>
-      <!--编译-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<skipTests>true</skipTests>
+	</properties>
+
+    <dependencies>
+		<!--web模块，包含SpringMVC和默认的嵌入式容器Tomcat-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+		<!--使MVC Web applications 支持Thymeleaf-->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+		<!-- Thymeleaf layout布局 -->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
+		<!--通过 Hibernate 使用 Spring Data JPA （Spring-data-jpa依赖于Hibernate）	-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--</dependency>-->
+		<!--测试模块，包括JUnit、Hamcrest、Mockito-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<!-- redis集成 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!-- mysql驱动 -->
+		<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+		<!--commons-lang3工具-->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.5</version>
+		</dependency>
+		<!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.47</version>
+		</dependency>
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.3</version>
+		</dependency>
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<!-- commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<!-- optional=true,依赖不会传递 -->
+			<optional>true</optional>
+		</dependency>
+    </dependencies>
+    <build>
+		<finalName>zhaopin</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+			<!-- mybatis-generator -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.7</version>
+				<configuration>
+					<configurationFile>src/test/resources/generatorConfig.xml</configurationFile>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+				<executions>
+					<execution>
+						<id>Generate MyBatis Artifacts</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.mybatis.generator</groupId>
+						<artifactId>mybatis-generator-core</artifactId>
+						<version>1.3.7</version>
+					</dependency>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.45</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+	
 </project>
+
+

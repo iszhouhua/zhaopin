@@ -1,0 +1,139 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>工作统计</title>
+    <link rel="stylesheet" th:href="@{/css/job.css}">
+    <!-- Select2 -->
+    <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+    <!-- Theme style -->
+    <link th:href="@{/plugins/admin-lte/css/AdminLTE.min.css}" rel="stylesheet">
+</head>
+<body>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        工作统计
+        <small>统计工作相关信息</small>
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">筛选</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="city">城市：</label>
+                <select class="form-control select2" id="city">
+                    <option selected="selected">全国</option>
+                    <option th:each="item:${cityList}" th:text="${item.city}"></option>
+                </select>
+                </div>
+                <div class="form-group zp-search-common">
+                    <label class="sr-only" for="keyword">工作：</label>
+                <input type="text" id="keyword"
+                       placeholder="请输入关键词,例如:JAVA,销售代表,行政助理等" value=""
+                       class="zp-search-input">
+                <a href="javascript:void(0);" class="zp-search-btn" id="btn_submit">
+                    <i class="fa fa-search fa-lg zp-search" aria-hidden="true"></i>
+                </a>
+                </div>
+            </form>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">工作经验与薪资的关系</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="salary_exp"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">学历与薪资的关系</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="salary_education"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">工作经验与用人需求的关系</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="demand_exp"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">学历与用人需求的关系</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="demand_education"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+<!-- echarts -->
+<script th:src="@{/plugins/echarts/echarts.min.js}"></script>
+<!-- Select2 -->
+<script th:src="@{/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{/plugins/select2/js/i18n/zh-CN.js}"></script>
+<!-- page script -->
+<script th:src="@{/js/job.js}"></script>
+</body>
+</html>
