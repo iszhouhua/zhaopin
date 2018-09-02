@@ -8,7 +8,8 @@ import com.zhaopin.dto.Result;
 import com.zhaopin.model.City;
 import com.zhaopin.model.Company;
 import com.zhaopin.model.Job;
-import com.zhaopin.task.SpiderThread;
+import com.zhaopin.service.JobService;
+import com.zhaopin.spider.SpiderThread;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -46,6 +47,9 @@ public class DataController {
 
     @Autowired
     private CityMapper cityMapper;
+
+    @Autowired
+    private JobService jobService;
 
     /**
      * 爬取数据
@@ -212,5 +216,20 @@ public class DataController {
     @GetMapping("companyIndustry")
     public List<Company> companyIndustry() {
         return companyMapper.countCompanyForIndustry();
+    }
+
+    /**
+     * 职位技术要求统计
+     * @param city 城市
+     * @param name 工作关键字
+     * @return
+     */
+    @PostMapping("skillStatistics")
+    public Map skillStatistics(String city, String name) {
+        Map result=new HashMap(2);
+        Map<String,Integer> map=jobService.skillStatistics(city,name);
+        result.put("skill",map.keySet());
+        result.put("total",map.values());
+        return result;
     }
 }

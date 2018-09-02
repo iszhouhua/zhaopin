@@ -44,4 +44,12 @@ public interface JobMapper {
      * @return
      */
     List<Job> countJobForEducationAndDemand(@Param("city")String cityName,@Param("name")String jobName);
+
+    /**
+     * 查询所有描述
+     * @param cityName 城市名
+     * @param jobName 工作关键字
+     * @return
+     */
+    List<String> selectDescriptionByCityAndName(@Param("city")String cityName,@Param("name")String jobName);
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -50,9 +49,10 @@ public class IndexController {
         return "update";
     }
 
-    @GetMapping("hello")
-    @ResponseBody
-    public String hello() {
-        return "Hello World";
+    @GetMapping("skill")
+    public String hello(Model model) {
+        List<City> cityList=cityMapper.selectCity();
+        model.addAttribute("cityList",cityList);
+        return "skill";
     }
 }

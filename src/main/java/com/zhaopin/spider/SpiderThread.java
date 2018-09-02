@@ -1,4 +1,4 @@
-package com.zhaopin.task;
+package com.zhaopin.spider;
 
 import com.zhaopin.dao.CompanyMapper;
 import com.zhaopin.dao.JobMapper;

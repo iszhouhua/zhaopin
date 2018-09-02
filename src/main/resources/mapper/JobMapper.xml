@@ -60,7 +60,7 @@
   </select>
 
   <select id="countJobForEducationAndSalary" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT floor(AVG(min_price))AS min_price,floor(AVG(max_price))AS max_price,education
+    SELECT  ifnull(floor(AVG(min_price)),0) AS min_price,ifnull(floor(AVG(max_price)),0) AS max_price,education
     FROM job
     <where>
       <if test="city!=null and city!='' and city!='全国'">
@@ -84,5 +84,17 @@
       </if>
     </where>
     GROUP BY education
+  </select>
+
+    <select id="selectDescriptionByCityAndName" parameterType="java.util.Map" resultType="java.lang.String">
+    SELECT description FROM job
+    <where>
+      <if test="city!=null and city!='' and city!='全国'">
+        city=#{city}
+      </if>
+      <if test="name!=null and name!=''">
+        AND `name` LIKE '%${name}%'
+      </if>
+    </where>
   </select>
 </mapper>

@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>技能统计</title>
+    <link rel="stylesheet" th:href="@{/css/job.css}">
+    <!-- Select2 -->
+    <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+    <!-- Theme style -->
+    <link th:href="@{/plugins/admin-lte/css/AdminLTE.min.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        技能统计
+        <small>统计岗位需求技能（目前统计方式存在很大缺陷）</small>
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">选择城市和职位</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="city">城市：</label>
+                    <select class="form-control select2" id="city">
+                        <option selected="selected">全国</option>
+                        <option th:each="item:${cityList}" th:text="${item.city}"></option>
+                    </select>
+                </div>
+                <div class="form-group zp-search-common">
+                    <label class="sr-only" for="keyword">工作：</label>
+                    <input type="text" id="keyword"
+                           placeholder="请输入关键词,例如:JAVA,销售代表,行政助理等" value=""
+                           class="zp-search-input">
+                    <a href="javascript:void(0);" class="zp-search-btn" id="btn_submit">
+                        <i class="fa fa-search fa-lg zp-search" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">技能要求</h3>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="skill" style="height: 1000px"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+</section>
+<!-- /.content -->
+
+<!-- echarts -->
+<script th:src="@{/plugins/echarts/echarts.min.js}"></script>
+<!-- Select2 -->
+<script th:src="@{/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{/plugins/select2/js/i18n/zh-CN.js}"></script>
+<script th:src="@{/js/skill.js}"></script>
+</body>
+</html>
