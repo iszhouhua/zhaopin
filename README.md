@@ -16,6 +16,25 @@
 
   统计出最大工资与最小工资，平均工资，中位数工资，以及工资和工作经验的关系、工资与学历的关系、工作经验与用人需求的关系、学历与用人需求的关系等信息进行展示，
   对于公司类型、规模、行业等信息也进行了统计显示。
+
+ 技能统计部分算法暂缺，能实现简单的技能统计。
+
 ## 3.使用技术
 
   java框架使用的是[SpringBoot](http://spring.io/projects/spring-boot)，HTML解析器使用的是[Jsoup](https://jsoup.org/)，数据可视化使用的是百度的Javascript的图表库[ECharts](http://echarts.baidu.com/)，数据库为[MySQL](https://www.mysql.com/)，同时通过[Redis](https://redis.io/ )对抓取到的链接进行去重处理。
+
+4.界面截图
+----------
+
+![](https://github.com/dev-zhouhua/zhaopin/raw/master/src/main/resources/static/images/20180902215458.png)
+
+![](https://raw.githubusercontent.com/dev-zhouhua/zhaopin/master/src/main/resources/static/images/20180902215559.png)
+
+![](https://raw.githubusercontent.com/dev-zhouhua/zhaopin/master/src/main/resources/static/images/20180902215654.png)
+
+![](https://raw.githubusercontent.com/dev-zhouhua/zhaopin/master/src/main/resources/static/images/20180902215707.png)
+
+![](https://raw.githubusercontent.com/dev-zhouhua/zhaopin/master/src/main/resources/static/images/20180902215539.png)
+
+
+
