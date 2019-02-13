@@ -1,19 +1,22 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}" th:with="active='skill'">
 <head>
     <title>技能统计</title>
-    <link rel="stylesheet" th:href="@{/css/job.css}">
     <!-- Select2 -->
     <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
-    <!-- Theme style -->
-    <link th:href="@{/plugins/admin-lte/css/AdminLTE.min.css}" rel="stylesheet">
+    <!-- Select2 -->
+    <script th:src="@{/plugins/select2/js/select2.min.js}"></script>
+    <script th:src="@{/plugins/select2/js/i18n/zh-CN.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/job.css}">
+    <script th:src="@{/js/skill.js}"></script>
 </head>
 <body>
-
+<div layout:fragment="content">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         技能统计
-        <small>统计岗位需求技能（统计算法待完善）</small>
+        <small>统计岗位需求技能</small>
     </h1>
 </section>
 <!-- Main content -->
@@ -31,7 +34,7 @@
                     <label class="sr-only" for="city">城市：</label>
                     <select class="form-control select2" id="city">
                         <option selected="selected">全国</option>
-                        <option th:each="item:${cityList}" th:text="${item.city}"></option>
+                        <option th:each="city:${cityList}" th:value="${city}" th:text="${city}"></option>
                     </select>
                 </div>
                 <div class="form-group zp-search-common">
@@ -57,15 +60,8 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-
 </section>
 <!-- /.content -->
-
-<!-- echarts -->
-<script th:src="@{/plugins/echarts/echarts.min.js}"></script>
-<!-- Select2 -->
-<script th:src="@{/plugins/select2/js/select2.min.js}"></script>
-<script th:src="@{/plugins/select2/js/i18n/zh-CN.js}"></script>
-<script th:src="@{/js/skill.js}"></script>
+</div>
 </body>
 </html>

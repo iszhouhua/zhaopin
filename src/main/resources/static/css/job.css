@@ -30,3 +30,8 @@
     color: #fff;
     font-size: 14px;
 }
+
+.select2-container .select2-selection--single{
+    height:34px;
+    line-height: 34px;
+}

@@ -7,11 +7,10 @@
       <ul class="sidebar-menu" data-widget="tree" id="navigation">
          <li class="header">主导航</li>
          <!-- Optionally, you can add icons to the links -->
-         <li class="active"><a th:href="@{/index}"><i class="fa fa-home"></i> <span>首页</span></a></li>
-         <li><a th:href="@{/job}"><i class="fa fa-briefcase"></i> <span>工作统计</span></a></li>
-         <li><a th:href="@{/company}"><i class="fa fa-building"></i> <span>公司统计</span></a></li>
-         <li><a th:href="@{/skill}"><i class="fa fa-building"></i> <span>技能统计</span></a></li>
-         <li><a th:href="@{/update}"><i class="fa fa-refresh"></i> <span>数据更新</span></a></li>
+         <li th:class="${active}?:'active'"><a th:href="@{/}"><i class="fa fa-home"></i> <span>首页</span></a></li>
+         <li th:class="${active}=='job'?'active'"><a th:href="@{/job}"><i class="fa fa-briefcase"></i> <span>工作统计</span></a></li>
+         <li th:class="${active}=='skill'?'active'"><a th:href="@{/skill}"><i class="fa fa-building"></i> <span>技能统计</span></a></li>
+         <li><a th:href="@{/html/zhaopin.html}" target="_blank"><i class="fa fa-refresh"></i> <span>数据更新</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
    </section>

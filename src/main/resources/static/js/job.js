@@ -1,8 +1,5 @@
 $(function(){
-    $('.select2').select2({
-        placeholder: "请选择城市",
-        allowClear: true
-    });
+    $('.select2').select2();
     option = {
         title : {
             subtext: '数据来自智联招聘',
@@ -77,7 +74,9 @@ $(function(){
 
     //统计工作经验与工资的关系
     function findSalaryExp(cityName,jobName) {
+        salaryExp.showLoading();
         $.post("jobExpAndSalary",{"city":cityName,"name":jobName},function(data){
+            salaryExp.hideLoading();
             salaryExp.setOption({
                 title : {
                     text: '工作经验与工资的关系'
@@ -94,7 +93,9 @@ $(function(){
 
     //统计学历与工资的关系
     function findSalaryEducation(cityName,jobName) {
+        salaryEducation.showLoading();
         $.post("jobEducationAndSalary",{"city":cityName,"name":jobName},function(data){
+            salaryEducation.hideLoading();
             salaryEducation.setOption({
                 title : {
                     text: '学历与工资的关系'
@@ -155,65 +156,11 @@ $(function(){
             }
         ]
     };
-    var demandExp=echarts.init(document.getElementById("demand_exp"),"macarons");
-    demandExp.setOption(option2);
-    findDemandExp();
-    var demandEducation=echarts.init(document.getElementById("demand_education"),"macarons");
-    demandEducation.setOption(option2);
-    findDemandEducation();
-
-    //统计工作经验与用人需求的关系
-    function findDemandExp(cityName,jobName) {
-        $.post("jobExpAndDemand",{"city":cityName,"name":jobName},function(data){
-            var experience=[],name=[];
-            for(var i=0;i<data.length;i++){
-                name.push(data[i].experience);
-                experience.push({name:data[i].experience,value:data[i].demand});
-            }
-            demandExp.setOption({
-                title : {
-                    text: '工作经验与用人需求的关系'
-                },
-
-                legend: {
-                    data:name
-                },
-                series :[
-                    {name:'工作经验',data:experience}
-                ]
-            });
-        });
-    }
-
-    //统计学历与用人需求的关系
-    function findDemandEducation(cityName,jobName) {
-        $.post("jobEducationAndDemand",{"city":cityName,"name":jobName},function(data){
-            var education=[],name=[];
-            for(var i=0;i<data.length;i++){
-                name.push(data[i].education);
-                education.push({name:data[i].education,value:data[i].demand});
-            }
-            demandEducation.setOption({
-                title : {
-                    text: '学历与用人需求的关系'
-                },
-
-                legend: {
-                    data:name
-                },
-                series :[
-                    { name:'学历',data:education}
-                ]
-            });
-        });
-    }
 
     $('#btn_submit').click(function () {
         var city=$('#city').select2("val");
         var name=$('#keyword').val();
         findSalaryExp(city,name);
         findSalaryEducation(city,name);
-        findDemandExp(city,name);
-        findDemandEducation(city,name);
     });
 });

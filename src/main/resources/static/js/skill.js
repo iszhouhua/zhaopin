@@ -11,8 +11,7 @@ $(function(){
                 text: '技能要求TOP 50'
             },
             tooltip: {
-                trigger: 'item',
-                formatter: '{b}<br/>{c}'
+                trigger: 'item'
             },
             xAxis:{
                 type:'value',
@@ -39,7 +38,7 @@ $(function(){
                 }
             },
             series: [{
-                name:'出现次数最多的50项技术',
+                name:'技能要求TOP 50',
                 type:'bar',
                 data:data.total,
                 color:'red',

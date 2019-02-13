@@ -1,8 +1,16 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}">
 <head>
     <title>首页</title>
+    <!-- echarts -->
+    <script th:src="@{/plugins/echarts/echarts.min.js}"></script>
+    <script th:src="@{/plugins/echarts/china.js}"></script>
+    <!-- page script -->
+    <script th:src="@{/js/index.js}"></script>
 </head>
 <body>
+<div layout:fragment="content">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -13,6 +21,27 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
+
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">招聘信息分布统计</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="cityMap" style="height:666px;"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <!--
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -27,11 +56,11 @@
                 <div class="box-body">
                     <div class="chart" id="province" style="height:666px;"></div>
                 </div>
-                <!-- /.box-body -->
+                &lt;!&ndash; /.box-body &ndash;&gt;
             </div>
-            <!-- /.box -->
+            &lt;!&ndash; /.box &ndash;&gt;
         </div>
-
+-->
         <div class="col-md-6">
             <div class="box box-info">
                 <div class="box-header with-border">
@@ -54,10 +83,6 @@
     <!-- /.row -->
 </section>
 <!-- /.content -->
-<!-- echarts -->
-<script th:src="@{/plugins/echarts/echarts.min.js}"></script>
-<script th:src="@{/plugins/echarts/china.js}"></script>
-<!-- page script -->
-<script th:src="@{/js/index.js}"></script>
+</div>
 </body>
 </html>
